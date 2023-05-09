@@ -1,10 +1,6 @@
 module RedmineEditauthor
   PLUGIN_ID = :redmine_editauthor
 
-  PATCHES = [
-    'Issue'
-  ]
-
   module Settings
     class << self
       def defaults
@@ -46,20 +42,15 @@ module RedmineEditauthor
   end
 
   def self.patch
-    PATCHES.each do |name|
-      require File.expand_path("#{self.name.underscore}/patches/#{name.underscore}_patch", __dir__)
+    require_relative "redmine_editauthor/patches/issue_patch"
 
-      target = name.constantize
-      patch = "#{self.name}::Patches::#{name}Patch".constantize
-
-      unless target.included_modules.include?(patch)
-        target.send(:include, patch)
-      end
+    unless Issue.included_modules.include?(RedmineEditauthor::Patches::IssuePatch)
+      Issue.send(:include, RedmineEditauthor::Patches::IssuePatch)
     end
   end
 
   def self.hook
-    require File.expand_path("#{self.name.underscore}/hook", __dir__)
+    require_relative "redmine_editauthor/hook"
   end
 
   def self.install

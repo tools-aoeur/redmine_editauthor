@@ -1,7 +1,6 @@
-# Redmine Edit Issue Author
+# Redmine Edit Author
 
-Redmine plugin that allows to change issue author.
-
+Redmine plugin that allows to change the issue author on edit or creation.
 
 ## Installation
 
@@ -12,23 +11,23 @@ Follow standard Redmine plugin installation procedure.
 
 ## Configuration
 
-#### Permissions
+### Permissions
 
 This plugin provides 2 permissions:
 
- * *Edit author* allows to edit author of existing issue.
- * *Set original author* allows to set author when creating new issue.
+  * *Edit author*: allows to edit author of existing issue.
+  * *Set original author*: allows to set author when creating new issue.
 
-Authorized users will be able to see author field and change its value in issue
-form.
-    
+Authorized users will be able to see the "author" field and change its value in
+the issue edit form.
 
-#### Possible authors
- 
- By default users with global permissions such as administrators will be
- listed even if they are not participants of the project. It is possible to
- narrow possible authors to project members in plugin settings.
+### Settings
 
+  * *Narrow authors to members*: Checkbox
+
+By default users with global permissions such as administrators will be
+listed even if they are not participants of the project. It is possible to
+narrow possible authors to project members in plugin settings.
 
 ## Requirements
 
